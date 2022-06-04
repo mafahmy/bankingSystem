@@ -1,0 +1,29 @@
+{
+  "name": "bankingsystem",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Basic banking system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch back-end --exec node --experimental-modules back-end/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mafahmy/bankingSystem.git"
+  },
+  "author": "Mahmoud Fahmy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mafahmy/bankingSystem/issues"
+  },
+  "homepage": "https://github.com/mafahmy/bankingSystem#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
