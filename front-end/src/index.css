@@ -11,3 +11,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+input,
+select,
+textarea,
+button {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem #a4a4a4 solid;
+  font-size: 1.6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.form label {
+  margin: 1rem 0;
+  display: block;
+}
+.form h1, h3   {
+  color: #ffffff;
+}
+.form a :hover {
+  color: #f0c040
+}
+.loginBack {
+  background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%),url("../public/images/bank12.jfif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+.home-main {
+  width: 100%;
+  height: 90vh;
+  
+  position: relative;
+  overflow: hidden; 
+  background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%),url("../public/images/bank12.jfif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}

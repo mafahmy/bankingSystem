@@ -1,12 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
+import AdminDashScreen from './screens/AdminDashScreen';
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";              
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from  './screens/HomeScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <BrowserRouter>
+    
+    
+    <Navbar />
+      {/* <AdminDashScreen /> */}
+      {/* <HomeScreen /> */}
+      {/* <LoginScreen />
+      <RegisterScreen /> */}
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
@@ -50,8 +63,19 @@ function App() {
             React Redux
           </a>
         </span>
-      </header>
-    </div>
+      </header> */}
+      <main>
+        <Routes>
+            <Route path="/" element={<HomeScreen />} exact></Route>
+            <Route path="/login" element={<LoginScreen />}></Route>
+            <Route path="/register" element={<RegisterScreen />}></Route>
+
+            {/* Will be Protected Route */}
+            <Route path="/adminPanel" element={<AdminDashScreen />} />
+        </Routes>
+      </main>
+    
+    </BrowserRouter>
   );
 }
 

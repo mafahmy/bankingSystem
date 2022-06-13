@@ -7,33 +7,136 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
+import LoginIcon from "@mui/icons-material/Login";
+import { Link } from "react-router-dom";
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="ALL Clients" />
-    </ListItemButton>
-
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="New Applications" />
-    </ListItemButton>
+    <Link to="/">
+      <ListItemButton>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      </ListItemButton>
+    </Link>
+    <Link to="/login">
+      <ListItemButton>
+        <ListItemIcon>
+          <LoginIcon />
+        </ListItemIcon>
+        <ListItemText primary="Log In" />
+      </ListItemButton>
+    </Link>
+    <Link to="/register">
+      <ListItemButton>
+        <ListItemIcon>
+          <HowToRegIcon />
+        </ListItemIcon>
+        <ListItemText primary="Register" />
+      </ListItemButton>
+    </Link>
   </React.Fragment>
 );
 
 export const secondaryListItems = (
+  <React.Fragment>
+    <ListSubheader component="div" inset>
+      Saved reports
+    </ListSubheader>
+    <ListItemButton>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Current month" />
+    </ListItemButton>
+    <ListItemButton>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Last quarter" />
+    </ListItemButton>
+  </React.Fragment>
+);
+export const userMainListItems = (
+  <React.Fragment>
+    <Link to="/">
+      <ListItemButton>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      </ListItemButton>
+    </Link>
+    <Link to="/login">
+      <ListItemButton>
+        <ListItemIcon>
+          <LoginIcon />
+        </ListItemIcon>
+        <ListItemText primary="Log In" />
+      </ListItemButton>
+    </Link>
+    <Link to="/register">
+      <ListItemButton>
+        <ListItemIcon>
+          <HowToRegIcon />
+        </ListItemIcon>
+        <ListItemText primary="Register" />
+      </ListItemButton>
+    </Link>
+  </React.Fragment>
+);
+
+export const userSecondaryListItems = (
+  <React.Fragment>
+    <ListSubheader component="div" inset>
+      Saved reports
+    </ListSubheader>
+    <ListItemButton>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Current month" />
+    </ListItemButton>
+    <ListItemButton>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Last quarter" />
+    </ListItemButton>
+  </React.Fragment>
+);
+export const adminMainListItems = (
+  <React.Fragment>
+    <Link to="/">
+      <ListItemButton>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      </ListItemButton>
+    </Link>
+    <Link to="/login">
+      <ListItemButton>
+        <ListItemIcon>
+          <LoginIcon />
+        </ListItemIcon>
+        <ListItemText primary="Log In" />
+      </ListItemButton>
+    </Link>
+    <Link to="/register">
+      <ListItemButton>
+        <ListItemIcon>
+          <HowToRegIcon />
+        </ListItemIcon>
+        <ListItemText primary="Register" />
+      </ListItemButton>
+    </Link>
+  </React.Fragment>
+);
+
+export const adminSecondaryListItems = (
   <React.Fragment>
     <ListSubheader component="div" inset>
       Saved reports
