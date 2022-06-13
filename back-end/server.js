@@ -4,6 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import userRouter from "./routers/userRouter.js";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
 
 dotenv.config();
@@ -13,6 +14,7 @@ let port = process.env.PORT || 5001;
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 await mongoose
