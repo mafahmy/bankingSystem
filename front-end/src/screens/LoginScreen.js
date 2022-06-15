@@ -40,11 +40,17 @@ const LoginScreen = () => {
     },
   });
   useEffect(() => {
-    // if (userInfo && isLoggedIn) {
-    //   navigate(redirect);
-    // }
-  }, [isLoggedIn, navigate, redirect, userInfo]);
+   
+    if (userInfo && isLoggedIn) {
+      navigate('/userdashboard');
+    }
+    if(isLoggedIn && userInfo.isAdmin) {
+      navigate("/adminPanel")
+    }
+  
 
+  }, [isLoggedIn, navigate, redirect, userInfo]);
+ 
   return (
     
       <div className="loginBack">

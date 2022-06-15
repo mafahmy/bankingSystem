@@ -1,4 +1,5 @@
 import User from "../models/userModel.js";
+import UserRequestRegister from "../models/userRequestRegister.js";
 import bcrypt from "bcrypt";
 import { generateToken, isAuth, isAdmin } from "../utils/utils.js";
 import expressAsyncHandler from "express-async-handler";
@@ -11,6 +12,12 @@ export const seed = expressAsyncHandler(async (req, res) => {
 
 export const getAllUsers = expressAsyncHandler(async (req, res) => {
   const users = await User.find({});
+
+  res.send(users);
+});
+
+export const getUsersRegisterRequest = expressAsyncHandler(async (req, res) => {
+  const users = await UserRequestRegister.find({});
 
   res.send(users);
 });
@@ -44,6 +51,22 @@ export const login = expressAsyncHandler(async (req, res) => {
   res.status(401).send({ message: "Invalid email or password" });
 });
 
+export const registerRequest = expressAsyncHandler(async (req, res) =>{
+  let userRegisterRequest = await UserRequestRegister.findOne({ email: req.body.email });
+  if (userRegisterRequest) {
+    res.status(401).send({ message: "You ALREADY Have A Registered Request Before" })
+  } else {
+    userRegisterRequest = new UserRequestRegister({
+      name: req.body.name,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password, 8),
+    })
+    res.status(200).send({ message: "Request Success will get to you shortly" })
+  }
+  await userRegisterRequest.save();
+  
+})
+
 export const register = expressAsyncHandler(async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (user) {
@@ -66,3 +89,4 @@ export const register = expressAsyncHandler(async (req, res) => {
   //   // token: token,
   // });
 });
+

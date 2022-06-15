@@ -2,12 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 import { logIn } from "./userLogInSlice";
 
-export const register = createAsyncThunk(
-  "REGISTER_USER",
+export const approveRegister = createAsyncThunk(
+  "APPROVE_REGISTER_USER",
   async ({ name, email, password }, thunkAPI) => {
     try {
       const { data } = await axios.post(
-        "/api/users/registerrequest",
+        "/api/users/register",
         {
           name,
           email,
@@ -27,22 +27,22 @@ export const register = createAsyncThunk(
   }
 );
 const initialState = {};
-const userRegisterSlice = createSlice({
-  name: "register",
+const approveUserRegisterSlice = createSlice({
+  name: "approveRegister",
   initialState,
   reducers: {},
   extraReducers: {
-    [register.pending]: (state, action) => {
+    [approveRegister.pending]: (state, action) => {
       state.isLoading = true;
     },
-    [register.fulfilled]: (state, action) => {
+    [approveRegister.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.userInfo = action.payload;
     },
-    [register.rejected]: (state, action) => {
+    [approveRegister.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     }
   },
 });
-export default userRegisterSlice.reducer;
+export default approveUserRegisterSlice.reducer;

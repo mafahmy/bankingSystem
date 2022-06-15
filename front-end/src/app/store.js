@@ -3,6 +3,7 @@ import counterReducer from '../features/counter/counterSlice';
 import usersListReducer from '../features/slices/usersListSlice';
 import userLogInReducer  from '../features/slices/userLogInSlice'
 import userRegisterReducer from '../features/slices/userRegisterSlice';
+import adminGetUsersRegisterRequestsReducer from '../features/slices/adminGetUsersRegisterRequestsSlice';
 const preloadedState = {};
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     users: usersListReducer,
     logIn: userLogInReducer,
     register: userRegisterReducer,
+    usersRegisterRequests: adminGetUsersRegisterRequestsReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   preloadedState,

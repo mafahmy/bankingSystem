@@ -15,9 +15,17 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { mainListItems, secondaryListItems } from "../components/ListItems";
+import UserMainListItems, {
+  mainListItems,
+  secondaryListItems,
+  userSecondaryListItems,
+} from "../components/ListItems";
 import MenuIcon from "@mui/icons-material/Menu";
-import UsersList from "../components/UsersList";
+// import UsersList from "../components/UsersList";
+import { useDispatch, useSelector } from "react-redux";
+
+import AdminMainListItems, { adminSecondaryListItems } from "./AdminListNav";
+
 
 const drawerWidth = 240;
 
@@ -69,9 +77,14 @@ const mdTheme = createTheme();
 
 function NavbarContent() {
   const [open, setOpen] = useState(false);
+  const logIn = useSelector((state) => state.logIn);
+  const { isLoggedIn, userInfo } = logIn;
+  
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
+ 
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -118,20 +131,36 @@ function NavbarContent() {
               alignItems: "center",
               justifyContent: "center",
 
-            //    px: [1],
+              //    px: [1],
             }}
           >
             <IconButton onClick={toggleDrawer}>
               {open ? <ChevronLeftIcon /> : <MenuIcon />}
-             
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav" sx={{ marginLeft: "6px" }}>
-            {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
-          </List>
+          {isLoggedIn && (!userInfo.isAdmin) && (
+            <List component="nav" sx={{ marginLeft: "6px" }}>
+              <UserMainListItems/> 
+              <Divider sx={{ my: 1 }} />
+              {userSecondaryListItems}
+            </List>
+          )}
+          {isLoggedIn && userInfo.isAdmin && (
+            <List component="nav" sx={{ marginLeft: "6px" }}>
+              <AdminMainListItems/> 
+              <Divider sx={{ my: 1 }} />
+              {adminSecondaryListItems}
+            </List>
+          )}
+          {!isLoggedIn && !userInfo && (
+            <List component="nav" sx={{ marginLeft: "6px" }}>
+              {mainListItems}
+              <Divider sx={{ my: 1 }} />
+              {secondaryListItems}
+            </List>
+          )}
+
         </Drawer>
         {/* <Box
           component="main"

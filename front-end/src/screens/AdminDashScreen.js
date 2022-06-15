@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
@@ -12,69 +12,27 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { mainListItems, secondaryListItems } from "../components/ListItems";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import UsersList from "../components/UsersList";
+import { useSelector } from 'react-redux';
+import {  useNavigate } from 'react-router-dom';
 
-const drawerWidth = 240;
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  "& .MuiDrawer-paper": {
-    // position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    boxSizing: "border-box",
-    ...(!open && {
-      overflowX: "hidden",
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      width: theme.spacing(7),
-      [theme.breakpoints.up("sm")]: {
-        width: theme.spacing(9),
-      },
-    }),
-  },
-}));
-
-const mdTheme = createTheme();
+ const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [open, setOpen] = useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
 
+  const { userInfo, isLoggedIn } = useSelector((state) => state.logIn);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!isLoggedIn) {
+          navigate("/login")  
+        }
+    })
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <Drawer variant="permanent" open={open}>
-          <Toolbar
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              // px: [1],
-            }}
-          >
-            <IconButton onClick={toggleDrawer}>
-              {open ? <ChevronLeftIcon /> : <MenuIcon />}
-              {/* <ChevronLeftIcon /> */}
-            </IconButton>
-          </Toolbar>
-          <Divider />
-          <List component="nav" sx={{ marginLeft: "6px" }}>
-            {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
-          </List>
-        </Drawer>
+
         <Box
           component="main"
           sx={{
@@ -114,9 +72,9 @@ function DashboardContent() {
               </Grid>
 
               <Grid item xs={12}>
-                <Paper
-                  sx={{ p: 2, display: "flex", flexDirection: "column" }}
-                ><UsersList /></Paper>
+                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+                  <UsersList />
+                </Paper>
               </Grid>
             </Grid>
           </Container>
