@@ -66,7 +66,9 @@ export default function UsersList() {
     },[dispatch])
   return (
     <React.Fragment>
-        {isLoading ? (<div>Loading</div>) : (
+        {isLoading || error ? (<div>Loading</div>) 
+        
+        : (
             <>
             <Title>ALL Clients</Title>
             <Table size="small">
