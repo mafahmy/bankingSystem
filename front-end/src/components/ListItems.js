@@ -9,7 +9,9 @@ import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LoginIcon from "@mui/icons-material/Login";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/slices/userLogInSlice";
 
 export const mainListItems = (
   <React.Fragment>
@@ -59,34 +61,43 @@ export const secondaryListItems = (
     </ListItemButton>
   </React.Fragment>
 );
-export const userMainListItems = (
-  <React.Fragment>
-    <Link to="/">
-      <ListItemButton>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      </ListItemButton>
-    </Link>
-    <Link to="/login">
-      <ListItemButton>
-        <ListItemIcon>
-          <LoginIcon />
-        </ListItemIcon>
-        <ListItemText primary="Log In" />
-      </ListItemButton>
-    </Link>
-    <Link to="/register">
-      <ListItemButton>
-        <ListItemIcon>
-          <HowToRegIcon />
-        </ListItemIcon>
-        <ListItemText primary="Register" />
-      </ListItemButton>
-    </Link>
-  </React.Fragment>
-);
+export default function UserMainListItems() 
+{
+  const dispatch = useDispatch();
+  
+  const handleLogout = () => {
+    dispatch(logout())
+    
+  }
+  return (
+    <React.Fragment>
+      <Link to="/">
+        <ListItemButton>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItemButton>
+      </Link>
+      <Link to="/createaccount">
+        <ListItemButton>
+          <ListItemIcon>
+            <LoginIcon />
+          </ListItemIcon>
+          <ListItemText primary="Create Account" />
+        </ListItemButton>
+      </Link>
+      <Link to="#logout" onClick={handleLogout}>
+        <ListItemButton>
+          <ListItemIcon>
+            <HowToRegIcon />
+          </ListItemIcon>
+          <ListItemText primary="Log Out" />
+        </ListItemButton>
+      </Link>
+    </React.Fragment>
+  );
+}
 
 export const userSecondaryListItems = (
   <React.Fragment>
@@ -107,51 +118,4 @@ export const userSecondaryListItems = (
     </ListItemButton>
   </React.Fragment>
 );
-export const adminMainListItems = (
-  <React.Fragment>
-    <Link to="/">
-      <ListItemButton>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      </ListItemButton>
-    </Link>
-    <Link to="/login">
-      <ListItemButton>
-        <ListItemIcon>
-          <LoginIcon />
-        </ListItemIcon>
-        <ListItemText primary="Log In" />
-      </ListItemButton>
-    </Link>
-    <Link to="/register">
-      <ListItemButton>
-        <ListItemIcon>
-          <HowToRegIcon />
-        </ListItemIcon>
-        <ListItemText primary="Register" />
-      </ListItemButton>
-    </Link>
-  </React.Fragment>
-);
 
-export const adminSecondaryListItems = (
-  <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-  </React.Fragment>
-);
