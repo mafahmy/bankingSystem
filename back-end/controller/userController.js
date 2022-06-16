@@ -36,7 +36,8 @@ export const login = expressAsyncHandler(async (req, res) => {
         // secure: true,
         httpOnly: true,
       };
-      res.cookie("jwtCook", token, options).status(200).send({
+
+      const auth = res.cookie("jwtCook", token, options).status(200).send({
         _id: user._id,
         name: user.name,
         email: user.email,
@@ -45,6 +46,9 @@ export const login = expressAsyncHandler(async (req, res) => {
         status: user.status,
         //  token: token,
       });
+      if (!auth) {
+        res.status(401).send({ message: "Token expired" })
+      }
       return;
     }
   }
