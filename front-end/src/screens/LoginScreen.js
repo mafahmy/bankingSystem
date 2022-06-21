@@ -54,13 +54,13 @@ const LoginScreen = () => {
   return (
     
       <div className="loginBack">
-        <div className="row center">
+        <div>
           {isLoading && (
             <Box sx={{ display: "flex", alignItem: "center" }}>
               <CircularProgress />
             </Box>
           )}
-        </div>
+        
 
         <form className="form" onSubmit={formik.handleSubmit}>
           <div>
@@ -120,6 +120,7 @@ const LoginScreen = () => {
             </div>
           </div>
         </form>
+        </div>
       </div>
     
   );

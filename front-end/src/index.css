@@ -24,6 +24,10 @@ button {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+a {
+  text-decoration: none;
+  color: black
+}
 
 .form {
   max-width: 50rem;
@@ -51,10 +55,11 @@ button {
   color: #f0c040
 }
 .loginBack {
-  
+  display: flex;
   background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%),url("../public/images/bank12.jfif");
   background-repeat: no-repeat;
   background-size: cover;
+  justify-content: center;
   
 }
 .home-main {

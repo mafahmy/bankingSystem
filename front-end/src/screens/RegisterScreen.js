@@ -44,7 +44,7 @@ const Register = () => {
   });
   return (
     <div className="loginBack">
-    <div className="center">
+    <div>
       <form className="form" onSubmit={formik.handleSubmit}>
         <div>
           <h1>Register</h1>
