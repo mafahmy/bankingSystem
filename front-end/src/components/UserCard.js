@@ -5,6 +5,10 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useDispatch } from 'react-redux';
+
+import { approveRegister } from '../features/slices/approveUserRegisterSlice';
+
 
 const bull = (
   <Box
@@ -16,17 +20,23 @@ const bull = (
 );
 
 export default function UserCard({ user }) {
+  const dispatch = useDispatch();
+  const { name, email, password } = user;
+
+  const handleClick = () => {
+    dispatch(approveRegister({name, email, password}));
+  }
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Name: {user.name}
+          Name: {name}
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Name: {user.email}
+          Name: {email}
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Name: {user.name}
+          Name: {password}
         </Typography>
         {/* <Typography variant="h5" component="div">
           be{bull}nev{bull}o{bull}lent
@@ -41,7 +51,7 @@ export default function UserCard({ user }) {
         </Typography> */}
       </CardContent>
       <CardActions>
-        <Button variant='contained' size="small">Approve</Button>
+        <Button variant='contained' size="small"onClick={handleClick}>Approve</Button>
         <Button variant="contained" size="small">Deny</Button>
       </CardActions>
     </Card>

@@ -79,7 +79,7 @@ export const register = expressAsyncHandler(async (req, res) => {
     user = new User({
       name: req.body.name,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 8),
+      password: req.body.password,
     });
   }
   const createdUser = await user.save();
@@ -92,5 +92,6 @@ export const register = expressAsyncHandler(async (req, res) => {
   //   status: createdUser.status,
   //   // token: token,
   // });
+  res.send({ message: "User registered successfully" })
 });
 

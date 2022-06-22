@@ -4,7 +4,7 @@ const HomeScreen = () => {
   return (
     <div className='home-main'>
     <div className='App'>
-      <h1>HOME PAGE</h1>
+      <h1>Egy Bank</h1>
     </div>
     </div>
   )
