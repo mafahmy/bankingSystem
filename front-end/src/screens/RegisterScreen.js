@@ -9,7 +9,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userRegister = useSelector((state) => state.register);
-  const { userInfo, isLoading, error } = userRegister;
+  const { userInfo, isLoading, error, success } = userRegister;
 
   const formik = useFormik({
     initialValues: {
@@ -40,11 +40,17 @@ const Register = () => {
     onSubmit: (values) => {
       const { name, email, password } = values;
       dispatch(register({ name, email, password }));
+      
     },
   });
   return (
     <div className="loginBack">
     <div>
+      {success && (
+        <div>
+         <h1>SUBMIT SUCESSS</h1> 
+        </div>
+      )}
       <form className="form" onSubmit={formik.handleSubmit}>
         <div>
           <h1>Register</h1>

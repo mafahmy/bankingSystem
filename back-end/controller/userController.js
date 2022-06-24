@@ -73,6 +73,8 @@ export const registerRequest = expressAsyncHandler(async (req, res) =>{
 
 export const register = expressAsyncHandler(async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
+  await UserRequestRegister.findOne({ email: req.body.email }).deleteOne();
+  
   if (user) {
     res.status(401).send({ message: "User with a given email already exist!" });
   } else {
@@ -81,6 +83,7 @@ export const register = expressAsyncHandler(async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
+    
   }
   const createdUser = await user.save();
   // res.send({

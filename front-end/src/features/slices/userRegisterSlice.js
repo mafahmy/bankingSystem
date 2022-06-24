@@ -38,6 +38,7 @@ const userRegisterSlice = createSlice({
     [register.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.userInfo = action.payload;
+      state.success = true;
     },
     [register.rejected]: (state, action) => {
       state.isLoading = false;
