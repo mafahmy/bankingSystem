@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { useDispatch } from 'react-redux';
 
 import { approveRegister } from '../features/slices/approveUserRegisterSlice';
+import { listUsersReqisterRequests } from '../features/slices/adminGetUsersRegisterRequestsSlice';
 
 
 const bull = (
@@ -25,6 +26,7 @@ export default function UserCard({ user }) {
 
   const handleClick = () => {
     dispatch(approveRegister({name, email, password}));
+    dispatch(listUsersReqisterRequests());
   }
   return (
     <Card sx={{ minWidth: 275 }}>
@@ -36,7 +38,7 @@ export default function UserCard({ user }) {
           Name: {email}
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Name: {password}
+          
         </Typography>
         {/* <Typography variant="h5" component="div">
           be{bull}nev{bull}o{bull}lent

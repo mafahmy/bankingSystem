@@ -4,20 +4,28 @@ import UserCard from '../components/UserCard'
 import { listUsersReqisterRequests } from '../features/slices/adminGetUsersRegisterRequestsSlice';
 import { useNavigate } from "react-router-dom";
 import { logout } from '../features/slices/userLogInSlice';
+import { approveRegister } from '../features/slices/approveUserRegisterSlice';
 
 const RegisterRequests = () => {
+  const { userInfo, isLoggedIn } = useSelector((state) => state.logIn);
   const usersRegisterRequests = useSelector((state) => state.usersRegisterRequests);
   const { registerRequests, isLoading, error } = usersRegisterRequests;
+  
+  
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login")  
+    }
     dispatch(listUsersReqisterRequests())
     if(error) {
       dispatch(logout());
       navigate("/login")
     }
-  },[dispatch, error, navigate])
+  },[dispatch, error, isLoggedIn, navigate])
   if (error) {
     return(
     <div>
@@ -30,9 +38,7 @@ const RegisterRequests = () => {
       <div>Loading....</div>
     )
   }
-  const handleClick = (e) => {
-    
-  }
+ 
   return (
     
     <div className='container'>
@@ -42,7 +48,7 @@ const RegisterRequests = () => {
         </div>
       )}
       {registerRequests.map((user) => (
-        <UserCard key={user._id} user={user}/>
+        <UserCard key={user._id} user={user} />
       ))}
         
         
