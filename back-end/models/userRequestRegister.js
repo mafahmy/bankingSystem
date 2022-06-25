@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema(
     isAdmin: { type: Boolean, required: true, default: false },
     isLoggedIn: { type: Boolean, required: true, default: false },
     status: { type: String, required: true, default: "active", enum: ['active', 'inActive', 'suspended'] },
+    
   },
   {
     timestamps: true,
