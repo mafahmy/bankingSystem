@@ -5,8 +5,8 @@ import {
   deleteAccount,
   getAccountRequest,
   getAllAccounts,
-} from "../controller/accountController";
-import { isAuth, isAdmin } from "../utils/utils";
+} from "../controller/accountController.js";
+import { isAuth, isAdmin } from "../utils/utils.js";
 
 const accountRouter = express.Router();
 
