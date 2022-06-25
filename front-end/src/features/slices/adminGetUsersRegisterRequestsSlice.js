@@ -18,7 +18,7 @@ export const listUsersReqisterRequests = createAsyncThunk(
   }
 );
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   registerRequests: [],
 };
 const adminGetUsersRegisterRequestsSlice = createSlice({

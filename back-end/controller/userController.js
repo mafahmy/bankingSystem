@@ -44,6 +44,7 @@ export const login = expressAsyncHandler(async (req, res) => {
         isAdmin: user.isAdmin,
         isLoggedIn: true,
         status: user.status,
+        hasAccount: user.hasAccount
         //  token: token,
       });
       if (!auth) {

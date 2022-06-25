@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import userRouter from "./routers/userRouter.js";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import accountRouter from "./routers/accountRouter.js";
 
 
 dotenv.config();
@@ -31,6 +32,7 @@ await mongoose
 
 
 app.use("/api/users", userRouter);
+app.use("/api/accounts", accountRouter);
 
 app.get("/", (req, res) => {
   res.send("SERVER IS RUNNING");
