@@ -30,7 +30,7 @@ export default function AdminMainListItems()  {
           <ListItemText primary="Home" />
         </ListItemButton>
       </Link>
-      <Link to="/registerrequest">
+      <Link to="/register-request">
         <ListItemButton>
           <ListItemIcon>
             <LoginIcon />
@@ -38,7 +38,7 @@ export default function AdminMainListItems()  {
           <ListItemText primary="Register Requests" />
         </ListItemButton>
       </Link>
-      <Link to="/accountsrequests">
+      <Link to="/accounts-requests">
         <ListItemButton>
           <ListItemIcon>
             <HowToRegIcon />

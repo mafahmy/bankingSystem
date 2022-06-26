@@ -79,7 +79,7 @@ export default function UserMainListItems()
           <ListItemText primary="Home" />
         </ListItemButton>
       </Link>
-      <Link to="/createaccount">
+      <Link to="/create-account">
         <ListItemButton>
           <ListItemIcon>
             <LoginIcon />
