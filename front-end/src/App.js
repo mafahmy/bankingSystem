@@ -10,6 +10,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import Navbar from './components/Navbar';
 import UserDashboardScreen from './screens/UserDashboardScreen';
 import RegisterRequests from './screens/RegisterRequests';
+import CreateAccountScreen from './screens/CreateAccountScreen';
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
             <Route path="/login" element={<LoginScreen />}></Route>
             <Route path="/register" element={<RegisterScreen />}></Route>
             <Route path="/userdashboard" element={ <UserDashboardScreen /> } />
+            <Route path="/create-account" element={ <CreateAccountScreen/> } />
 
             {/* Will be Protected Route */}
             <Route path="/adminPanel" element={<AdminDashScreen />} />
