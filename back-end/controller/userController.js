@@ -44,11 +44,11 @@ export const login = expressAsyncHandler(async (req, res) => {
         isAdmin: user.isAdmin,
         isLoggedIn: true,
         status: user.status,
-        hasAccount: user.hasAccount
+        hasAccount: user.hasAccount,
         //  token: token,
       });
       if (!auth) {
-        res.status(401).send({ message: "Token expired" })
+        res.status(401).send({ message: "Token expired" });
       }
       return;
     }
@@ -56,26 +56,31 @@ export const login = expressAsyncHandler(async (req, res) => {
   res.status(401).send({ message: "Invalid email or password" });
 });
 
-export const registerRequest = expressAsyncHandler(async (req, res) =>{
-  let userRegisterRequest = await UserRequestRegister.findOne({ email: req.body.email });
+export const registerRequest = expressAsyncHandler(async (req, res) => {
+  let userRegisterRequest = await UserRequestRegister.findOne({
+    email: req.body.email,
+  });
   if (userRegisterRequest) {
-    res.status(401).send({ message: "You ALREADY Have A Registered Request Before" })
+    res
+      .status(401)
+      .send({ message: "You ALREADY Have A Registered Request Before" });
   } else {
     userRegisterRequest = new UserRequestRegister({
       name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
-    })
-    res.status(200).send({ message: "Request Success will get to you shortly" })
+    });
+    res
+      .status(200)
+      .send({ message: "Request Success will get to you shortly" });
   }
   await userRegisterRequest.save();
-  
-})
+});
 
 export const register = expressAsyncHandler(async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   await UserRequestRegister.findOne({ email: req.body.email }).deleteOne();
-  
+
   if (user) {
     res.status(401).send({ message: "User with a given email already exist!" });
   } else {
@@ -84,18 +89,8 @@ export const register = expressAsyncHandler(async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
-    
   }
-  const createdUser = await user.save();
-  // res.send({
-  //   _id: createdUser._id,
-  //   name: createdUser.name,
-  //   email: createdUser.email,
-  //   isAdmin: createdUser.isAdmin,
-  //   isLoggedIn: createdUser.isLoggedIn,
-  //   status: createdUser.status,
-  //   // token: token,
-  // });
-  res.send({ message: "User registered successfully" })
-});
+  await user.save();
 
+  res.send({ message: "User registered successfully" });
+});
