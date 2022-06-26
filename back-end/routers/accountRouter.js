@@ -11,9 +11,9 @@ import { isAuth, isAdmin } from "../utils/utils.js";
 const accountRouter = express.Router();
 
 accountRouter.get("/", isAuth, isAdmin, getAllAccounts);
-accountRouter.post("/createaccount", createAccount);
-accountRouter.delete("/deleteacount/:id", isAuth, deleteAccount);
-accountRouter.get("/accountrequest", isAuth, isAdmin, getAccountRequest);
-accountRouter.get("/approveaccount/:id", isAuth, isAdmin, approveAccount);
+accountRouter.post("/create-account/:id", createAccount);
+accountRouter.delete("/delete-acount/:id", isAuth, deleteAccount);
+accountRouter.get("/account-request", isAuth, isAdmin, getAccountRequest);
+accountRouter.post("/approve-account", approveAccount);
 
 export default accountRouter;

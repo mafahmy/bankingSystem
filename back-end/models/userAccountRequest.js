@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import validator from "validator";
 
- const accountSchema = new mongoose.Schema(
+const accountSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -24,5 +23,6 @@ import validator from "validator";
   },
   { timestamps: true }
 );
-const Account = mongoose.model("Account", accountSchema);
-export default Account;
+
+const UserAccountRequest = mongoose.model("UserAccountRequest", accountSchema);
+export default UserAccountRequest;
