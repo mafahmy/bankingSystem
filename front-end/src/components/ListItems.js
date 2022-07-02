@@ -61,8 +61,9 @@ export const secondaryListItems = (
     </ListItemButton>
   </React.Fragment>
 );
-export default function UserMainListItems() 
+export default function UserMainListItems({ userId }) 
 {
+  
   const dispatch = useDispatch();
   
   const handleLogout = () => {
@@ -79,7 +80,7 @@ export default function UserMainListItems()
           <ListItemText primary="Home" />
         </ListItemButton>
       </Link>
-      <Link to="/create-account">
+      <Link to={`/create-account/${userId}`}>
         <ListItemButton>
           <ListItemIcon>
             <LoginIcon />

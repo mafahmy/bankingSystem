@@ -141,7 +141,7 @@ function NavbarContent() {
           <Divider />
           {isLoggedIn && (!userInfo.isAdmin) && (
             <List component="nav" sx={{ marginLeft: "6px" }}>
-              <UserMainListItems/> 
+              <UserMainListItems userId={userInfo._id}/> 
               <Divider sx={{ my: 1 }} />
               {userSecondaryListItems}
             </List>

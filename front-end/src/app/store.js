@@ -5,6 +5,7 @@ import userLogInReducer  from '../features/slices/userLogInSlice'
 import userRegisterReducer from '../features/slices/userRegisterSlice';
 import adminGetUsersRegisterRequestsReducer from '../features/slices/adminGetUsersRegisterRequestsSlice';
 import approveUserRegisterReducer from '../features/slices/approveUserRegisterSlice';
+import userCreateAccountReducer from '../features/slices/userCreateAccountSlice';
 const preloadedState = {};
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
     logIn: userLogInReducer,
     register: userRegisterReducer,
     usersRegisterRequests: adminGetUsersRegisterRequestsReducer,
-    approveRegister: approveUserRegisterReducer
+    approveRegister: approveUserRegisterReducer,
+    createAccount: userCreateAccountReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   preloadedState,
