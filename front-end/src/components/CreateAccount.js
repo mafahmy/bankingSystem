@@ -1,9 +1,14 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import { useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { createAccount } from "../features/slices/userCreateAccountSlice";
 
 const CreateAccount = () => {
+  const { id: userId } = useParams();
+  const dispatch = useDispatch();
+  console.log(userId)
   const error = {
     color: "white",
     fontWeight: "bold",
@@ -25,6 +30,7 @@ const CreateAccount = () => {
     onSubmit: (values) => {
       const { accountName, accountBalance, accountType } = values;
       console.log(values);
+      dispatch(createAccount({userId, accountName, accountType, accountBalance}));
     },
   });
 
@@ -34,6 +40,7 @@ const CreateAccount = () => {
         <h1>Apply for an account</h1>
       </div>
       <div>
+        <label>Account Name</label>
         <input
           name="accountName"
           type="text"
@@ -47,7 +54,7 @@ const CreateAccount = () => {
         ) : null}
       </div>
       <div>
-        <label></label>
+        <label>Initial Balance</label>
         <input
           name="accountBalance"
           type="text"
@@ -61,7 +68,7 @@ const CreateAccount = () => {
         ) : null}
       </div>
       <div>
-        <label htmlFor="accountType"></label>
+        <label htmlFor="accountType">Account Type</label>
         <select
           name="accountType"
           onChange={formik.handleChange}

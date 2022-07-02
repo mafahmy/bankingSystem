@@ -47,6 +47,9 @@ a {
 .form label {
   margin: 1rem 0;
   display: block;
+  color: white;
+  font-weight: bold;
+
 }
 .form h1, h3   {
   color: #ffffff;

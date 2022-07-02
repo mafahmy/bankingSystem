@@ -19,8 +19,8 @@ function App() {
           <Route path="/" element={<HomeScreen />} exact></Route>
           <Route path="/login" element={<LoginScreen />}></Route>
           <Route path="/register" element={<RegisterScreen />}></Route>
-          <Route path="/userdashboard" element={<UserDashboardScreen />} />
-          <Route path="/create-account" element={<CreateAccountScreen />} />
+          <Route path="/user-dashboard/:id" element={<UserDashboardScreen />} />
+          <Route path="/create-account/:id" element={<CreateAccountScreen />} />
 
           {/* Will be Protected Route */}
           <Route path="/adminPanel" element={<AdminDashScreen />} />

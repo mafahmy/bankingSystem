@@ -42,7 +42,7 @@ const LoginScreen = () => {
   useEffect(() => {
    
     if (userInfo && isLoggedIn) {
-      navigate('/userdashboard');
+      navigate(`/user-dashboard/${userInfo._id}`);
     }
     if(isLoggedIn && userInfo.isAdmin) {
       navigate("/adminPanel")
