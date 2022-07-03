@@ -24,7 +24,8 @@ function App() {
 
           {/* Will be Protected Route */}
           <Route path="/adminPanel" element={<AdminDashScreen />} />
-          <Route path="/registerrequest" element={<RegisterRequests />} />
+          <Route path="/register-request" element={<RegisterRequests />} />
+          {/* <Route path="/accounts-requests" element={<AccountRequests />} /> */}
         </Routes>
       </main>
     </BrowserRouter>
