@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import UserDashboardScreen from "./screens/UserDashboardScreen";
 import RegisterRequests from "./screens/RegisterRequests";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
+import AccountRequest from "./screens/AccountRequest";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           {/* Will be Protected Route */}
           <Route path="/adminPanel" element={<AdminDashScreen />} />
           <Route path="/register-request" element={<RegisterRequests />} />
+          <Route path="/accounts-requests" element={<AccountRequest />} />
           {/* <Route path="/accounts-requests" element={<AccountRequests />} /> */}
         </Routes>
       </main>
