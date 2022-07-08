@@ -1,8 +1,9 @@
 import User from "../models/userModel.js";
 import UserRequestRegister from "../models/userRequestRegister.js";
 import bcrypt from "bcrypt";
-import { generateToken, isAuth, isAdmin } from "../utils/utils.js";
+import { generateToken } from "../utils/utils.js";
 import expressAsyncHandler from "express-async-handler";
+import data from "../data.js";
 
 export const seed = expressAsyncHandler(async (req, res) => {
   await User.deleteMany({});
