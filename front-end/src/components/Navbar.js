@@ -25,6 +25,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useDispatch, useSelector } from "react-redux";
 
 import AdminMainListItems, { adminSecondaryListItems } from "./AdminListNav";
+import AdminDashScreen from "../screens/AdminDashScreen";
 
 
 const drawerWidth = 240;
@@ -123,6 +124,7 @@ function NavbarContent() {
               </Badge>
             </IconButton>
           </Toolbar>
+          {/* <AdminDashScreen /> */}
         </AppBar>
         <Drawer variant="permanent" open={open}>
           <Toolbar

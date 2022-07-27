@@ -21,10 +21,10 @@ const RegisterRequests = () => {
       navigate("/login")  
     }
     dispatch(listUsersReqisterRequests())
-    if(error) {
-      dispatch(logout());
-      navigate("/login")
-    }
+    // if(error) {
+    //   dispatch(logout());
+    //   navigate("/login")
+    // }
   },[dispatch, error, isLoggedIn, navigate])
   if (error) {
     return(
