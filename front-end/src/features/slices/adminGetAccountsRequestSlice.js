@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const listAccountsRequest = createAsyncThunk(
+
   "LIST_ACCOUNT_REQUEST",
   async (number, thunkAPI) => {
     try {
@@ -44,3 +45,4 @@ const adminGetAccountsRequestSlice = createSlice({
   },
 });
 export default adminGetAccountsRequestSlice.reducer;
+

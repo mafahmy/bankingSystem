@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { generateToken } from "../utils/utils.js";
 import expressAsyncHandler from "express-async-handler";
 import data from "../data.js";
+import Account from "../models/accountModel.js";
 
 export const seed = expressAsyncHandler(async (req, res) => {
   await User.deleteMany({});
@@ -94,4 +95,8 @@ export const register = expressAsyncHandler(async (req, res) => {
   await user.save();
 
   res.send({ message: "User registered successfully" });
+});
+export const getUserAccounts = expressAsyncHandler(async (req, res) => {
+  let accounts = await Account.find({user: req.body.user})
+  res.send(accounts)
 });
